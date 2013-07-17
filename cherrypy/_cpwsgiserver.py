@@ -250,7 +250,10 @@ class WorkerThread(threading.Thread):
                     except:
                         traceback.print_exc()
                 finally:
-                    request.terminate()
+		    try:
+                    	request.terminate()
+		    except:
+                        traceback.print_exc()
         except (KeyboardInterrupt, SystemExit), exc:
             self.server.interrupt = exc
 
