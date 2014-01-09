@@ -222,7 +222,7 @@ class Request(object):
                         doc="Deprecated. A copy of the original params.")
     
     def _get_browser_url(self):
-        url = self.base + self.path
+        url = self.base.split(',')[0] + self.path
         if self.query_string:
             url += '?' + self.query_string
         return url
