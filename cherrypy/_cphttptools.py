@@ -213,7 +213,7 @@ class Request(object):
             if not self.headers.has_key("Host"):
                 msg = "HTTP/1.1 requires a 'Host' request header."
                 raise cherrypy.HTTPError(400, msg)
-        self.base = "%s://%s" % (self.scheme, self.headers.get('Host', ''))
+        self.base = "%s://%s" % (self.scheme, self.headers.get('Host', '').split(',')[0])
     
     def _get_original_params(self):
         # This feature is deprecated in 2.2 and will be removed in 2.3.
